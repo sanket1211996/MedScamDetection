@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pymongo
-
+from GoFundScrapper import MyWebScraper
 
 def scrape_quotes():
     more_links = True
@@ -30,16 +30,22 @@ def scrape_quotes():
             more_links = False
     return quotes
 
+def dumpScarpData(data, collection):
+    client = pymongo.MongoClient("mongodb+srv://medscamscapper:<password>@med-scrap-data.mjhhsle.mongodb.net/?retryWrites=true&w=majority")
+    db = client.db[f'{collection}']
+    try:
+        db.insert_many(data)
+        print(f'inserted {len(data)} ')
+    except Exception as e:
+        print(f'an error occurred {collection} were not stored to db', e)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    quotes = scrape_quotes()
-    client = pymongo.MongoClient("mongodb+srv://medscamscapper:<password>@med-scrap-data.mjhhsle.mongodb.net/?retryWrites=true&w=majority")
-    db = client.db.quotes
-    try:
-        db.insert_many(quotes)
-        print(f'inserted {len(quotes)} articles')
-    except Exception as e:
-        print('an error occurred quotes were not stored to db', e)
+    # medical url only
+    searchResultLink = MyWebScraper('https://www.gofundme.com/s?q=&c=11')
+    fundRaiserLinks = []
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    for data in searchResultLink.fundraisers_links:
+        fundRaiserLinks.append({'link': data, 'profile_scrapped': 'false'})
+
+    dumpScarpData(fundRaiserLinks, 'fundraiser-link')
