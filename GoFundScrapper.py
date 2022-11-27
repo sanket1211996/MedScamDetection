@@ -15,6 +15,12 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException,
 # from chromedriver_py import binary_path  # this will get you the path variable
 from webdriver_manager.chrome import ChromeDriverManager
 
+from bs4 import BeautifulSoup
+import numpy as np
+import pandas as pd
+from time import sleep
+import re
+
 
 def ShowMore_clicker(driver, t_seconds=2 ** 2):
     start_clicking_time = time.time()
@@ -25,7 +31,8 @@ def ShowMore_clicker(driver, t_seconds=2 ** 2):
             start_loading_time = time.time()
             button = driver.find_element(By.CLASS_NAME, 'StateResults_button__DIGoI')
             driver.execute_script("arguments[0].click();", button)
-            WebDriverWait(driver, t_seconds, 0.001).until(EC.element_to_be_clickable((By.CLASS_NAME, 'StateResults_button__DIGoI')))
+            WebDriverWait(driver, t_seconds, 0.001).until(
+                EC.element_to_be_clickable((By.CLASS_NAME, 'StateResults_button__DIGoI')))
             loading_time = time.time() - start_loading_time
             print(i, ", loading succeeded", ", using %s seconds" % loading_time)
         # NoSuchElementException - happens when the page does not have the button at all
@@ -87,6 +94,50 @@ class MyWebScraper(object):
         return fundraisers_links_list
 
 
+headers = ["Url", "Title", "Organiser", "Org_Location", "Text"]
+
+
+def scrap_profile_data(url):
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'lxml')
+
+    title_container = soup.find_all("h1", {
+        "class": "campaign-title"})  # <h1 class="campaign-title">Help Rick Muchow Beat Cancer</h1>
+
+    try:
+        title = title_container[0].text
+    except:
+        title = np.nan
+
+    text_container = soup.find('meta', attrs={'name': 'description'})
+
+    try:
+        all_text = text_container['content']
+    except:
+        all_text = np.nan
+
+    organiser_container = soup.find_all("div", {"class": "m-person-info-name"})
+
+    try:
+        organiser = organiser_container.text
+    except:
+        organiser = np.nan
+
+    organiser_loc_container = soup.find_all("div", {"class": "m-person-info-content"})
+
+    try:
+        organiser_loc = organiser_loc_container[1].text
+    except:
+        organiser_loc = np.nan
+
+    profile_data = {'url': url, 'title': title, 'organiser': organiser, 'organiser_location': organiser_loc,
+                    'content': all_text}
+
+    return profile_data
+
 # gofundmeObj = MyWebScraper('https://www.gofundme.com/s?q=&c=11')
 # print('Result')
 # print(gofundmeObj.fundraisers_links);
+
+# data = scrap_profile_data('https://www.gofundme.com/f/matt-summers?qid=43ccfcca04466864bbdc550e384c205c')
+# print(data)

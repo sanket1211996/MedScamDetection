@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pymongo
 from GoFundScrapper import MyWebScraper
+from GoFundScrapper import scrap_profile_data
 
 def scrape_quotes():
     more_links = True
@@ -31,7 +32,7 @@ def scrape_quotes():
     return quotes
 
 def dumpScarpData(data, collection):
-    client = pymongo.MongoClient("mongodb+srv://medscamscapper:<password>@med-scrap-data.mjhhsle.mongodb.net/?retryWrites=true&w=majority")
+    client = pymongo.MongoClient("mongodb+srv://medscamscapper:2YD0RAJOepB29XNs@med-scrap-data.mjhhsle.mongodb.net/?retryWrites=true&w=majority")
     db = client.db[f'{collection}']
     try:
         db.insert_many(data)
@@ -40,7 +41,8 @@ def dumpScarpData(data, collection):
         print(f'an error occurred {collection} were not stored to db', e)
 
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
+
+def get_fund_url():
     # medical url only
     searchResultLink = MyWebScraper('https://www.gofundme.com/s?q=&c=11')
     fundRaiserLinks = []
@@ -49,3 +51,17 @@ if __name__ == '__main__':
         fundRaiserLinks.append({'link': data, 'profile_scrapped': 'false'})
 
     dumpScarpData(fundRaiserLinks, 'fundraiser-link')
+
+def get_fund_profile():
+    # medical url only
+    urls = ['https://www.gofundme.com/f/matt-summers?qid=43ccfcca04466864bbdc550e384c205c']
+
+    funds_data = []
+    for url in urls:
+        funds_data.append(scrap_profile_data(url))
+
+    dumpScarpData(funds_data, 'fundraiser-profile')
+
+if __name__ == '__main__':
+    # get_fund_url()
+    get_fund_profile()
