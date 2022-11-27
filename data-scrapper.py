@@ -32,7 +32,7 @@ def scrape_quotes():
     return quotes
 
 def dumpScarpData(data, collection):
-    client = pymongo.MongoClient("mongodb+srv://medscamscapper:2YD0RAJOepB29XNs@med-scrap-data.mjhhsle.mongodb.net/?retryWrites=true&w=majority")
+    client = pymongo.MongoClient("mongodb+srv://medscamscapper:<password>@med-scrap-data.mjhhsle.mongodb.net/?retryWrites=true&w=majority")
     db = client.db[f'{collection}']
     try:
         db.insert_many(data)
