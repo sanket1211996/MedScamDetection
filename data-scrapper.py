@@ -4,7 +4,7 @@ import pymongo
 from GoFundScrapper import MyWebScraper
 from GoFundScrapper import scrap_profile_data
 
-DB_URL = 'mongodb+srv://medscamscapper:OtyCeNbpSt3ZuCSd@med-scrap-data.mjhhsle.mongodb.net/?retryWrites=true&w=majority'
+DB_URL = 'mongodb+srv://medscamscapper:<password>@med-scrap-data.mjhhsle.mongodb.net/?retryWrites=true&w=majority'
 
 
 def scrape_quotes():
