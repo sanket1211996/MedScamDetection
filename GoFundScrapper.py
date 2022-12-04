@@ -102,32 +102,29 @@ def scrap_profile_data(url):
     soup = BeautifulSoup(page.text, 'lxml')
 
     title_container = soup.find_all("h1", {
-        "class": "campaign-title"})  # <h1 class="campaign-title">Help Rick Muchow Beat Cancer</h1>
+        "class": "mb0 p-campaign-title"})  # <h1 class="campaign-title">Help Rick Muchow Beat Cancer</h1>
 
     try:
         title = title_container[0].text
     except:
         title = np.nan
 
-    text_container = soup.find('meta', attrs={'name': 'description'})
+    text_container = soup.find_all("div", {"class": "o-campaign-story mt3x"})
 
     try:
-        all_text = text_container['content']
+        all_text = text_container[0].text
+        all_text = all_text.replace('\n','')
     except:
         all_text = np.nan
 
-    organiser_container = soup.find_all("div", {"class": "m-person-info-name"})
+    organiser_container = soup.find_all("div", {"class": "m-campaign-members-main-organizer"})
 
     try:
-        organiser = organiser_container.text
+        organiser_both = organiser_container[0].text.split('\xa0')
+        organiser = organiser_both[0]
+        organiser_loc = organiser_both[1][9:]
     except:
         organiser = np.nan
-
-    organiser_loc_container = soup.find_all("div", {"class": "m-person-info-content"})
-
-    try:
-        organiser_loc = organiser_loc_container[1].text
-    except:
         organiser_loc = np.nan
 
     profile_data = {'url': url, 'title': title, 'organiser': organiser, 'organiser_location': organiser_loc,
