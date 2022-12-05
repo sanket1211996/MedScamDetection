@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "med-scam",
+  "private_key_id": "db21acfb4b4b120d863a7a50ed44b9dcc9a148af",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCUTw5uFSpIg9ns\nyx7TwEIFSoZXACDyBoP/mSDWKQMMUZQh7C7g7WSmQ9milui+N9Rk78YSfaSTwKkb\n8NRwy9Px9kejULXIRqDZSoDnNMFcU9SoFpL6KGC30QNEkKXyByoc7L21rqwaGzX1\nvxceXi700YlWSZaJy9Yt6aHgHE+PR4IB/sUQA5nwYWrQqtqmpIOiaPkJ8I5qs68Q\nejtVQmLyolGuBR4TLhK8OxHo5GQilB5NEYCcjhPMnelie6UpTxI+q59AAwO+yOH4\nTtUabSnpu678sJFn5z/Zw4oGvQHdsAQrq8pxW6avn/JfUF3xiiZfhEehyv/7W2tw\nS9F7gkObAgMBAAECggEAGiRVRtI0QdP79eFX7btV59jbFTrQk9jSK5uyTg2sm99F\nXTVkjgFKXIRZOG+hVuZAagpZv6il+eVb6bDpwXgsQ9pFhmQTptnMQIEBd7+01bFx\nKq/P+IhlhAEzskJM/fyFT9PrHLtNWsyxFkA4swGnBUBqFOujvWZQuocUIYzb+UU8\nruK+iRne15uhMGNppYaLfY/pw0mMD7L3uJbe3vvnVbelaznT8G+riP1iDAZcs/7H\nf94s9cHb4ey/D4p6bVT3szC0EmKO8APsVYR7HgeiXHByuaIEEpqryx5UErJycNkf\nkDP3UqIT2CqmqjtGVYyVQM5OOpbSeUQOozowSge/AQKBgQDP7xMycCprMNZ/KOTe\nnQjrWqWBHKKBkvMMLjG6RN1yNz2yaplu4DKlzqmR3WcAyZOMQKtNSOcyJm+dNeQe\n49IOZbavC35wmEK8bdiBy0dH3l4X2sl+Y3PFoLHJLHOCvHB2euUUUEnwlstRjbkA\nft6ZCKq9QiUDQ7z0RvEoU16b/wKBgQC2l4rVBWyCCh//9EI3aEYe7RhnMPRbtQat\nQ9JETX8J3t9pThMPajcVKDq9iBzAXsaFUFncXqt0W4egpO88s8Xx8CwXI7TEYPb7\nI0OblgBKMqkh5pWS6j2eQsXkpD90a3OqjwOH44UoZXOAcdBwOM96mtk1FF4TDaKL\nkLFz4LFIZQKBgHipFQy5xgO5rV7Qzi7YFWrtiQjpIuvp6BvzWmvqtk4m/Chib3LF\nqt5IlGHOho0QbAyBImaQnYiegTpLIXtDXIt6Po5JLzALSv6pB3AaE90Cjrts/GvZ\nLj9KRqCkqMr+qow2OGSXSrDP8F/8y5QcCvPm8Z0tmujQD//4gsyRxF7lAoGACUtd\nfcpw442wY08Dr95W82wOOfJ7/c8RL/Cr2142gUIfDTU0Myys8R7DHrK3A/PPFyon\n6NfI0nt2Q+8hXm2oPdCD7gmbQgPNjqsU3e6cxSofAeLC6l+SE2RCvoi90idGFACD\npX8nYA8J+hfRDGVX6l3HgLQwtbeT9pa+8a8WVyECgYBwE2RugrxGEv2ZNysxC9+f\nQsYQbHoUw6MiYv6zb9FqbE8EnMd85extihBXDCwNDvEa3FeUMhbCSTA+zQNAOUZT\n9YYqyvzhNJkMDBRX/nZggi9mC2cyDgmIjS/vVwnC89IZzmnFwkp4GePrnUTHBcBE\ngYY/yaVhvJEtLZqpu6sB2w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-5u20b@med-scam.iam.gserviceaccount.com",
+  "client_id": "114864774623360183466",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-5u20b%40med-scam.iam.gserviceaccount.com"
+}
