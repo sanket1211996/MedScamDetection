@@ -127,7 +127,14 @@ def scrap_profile_data(url):
         organiser = np.nan
         organiser_loc = np.nan
 
-    profile_data = {'url': url, 'title': title, 'organiser': organiser, 'organiser_location': organiser_loc,
+    try:
+        div_style = soup.find('div', {"class": "a-image a-image--background"})['style']
+        ptr = re.search("http.*[)]", div_style)
+        patient_picture_url = div_style[ptr.start():ptr.end() - 1]
+    except:
+        patient_picture_url = np.nan
+
+    profile_data = {'url': url, 'title': title, 'patient_picture_url': patient_picture_url, 'organiser': organiser, 'organiser_location': organiser_loc,
                     'content': all_text}
 
     return profile_data
